@@ -1,4 +1,6 @@
-# pokedex
+# Pokédex
+
+This is a small Pokédex buitl with Vue.js that gets all the data from [PokéAPI](https://pokeapi.co/)
 
 ## Project setup
 ```

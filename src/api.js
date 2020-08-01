@@ -6,10 +6,10 @@ function getPokemons() {
     .then(res => res.results);
 }
 
-function getPokemon(pokemonNumber) {
-  return fetch(`${URL}/pokemon/${pokemonNumber}/`)
+function getPokemon(id) {
+  return fetch(`${URL}/pokemon/${id}/`)
     .then(res => res.json())
-    .then(res => res.sprites.front_default);
+    .then(res => res);
 }
 
 export default {
