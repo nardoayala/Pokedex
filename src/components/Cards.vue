@@ -5,7 +5,7 @@
         class="cards__item__link"
         :to="{ name: 'pokemon-details', params: { id: index + 1 } }"
       >
-        <h5>#{{ index + 1 }}</h5>
+        <h5>#{{ (index + 1) | leadingZero }}</h5>
         <img
           :src="
             `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index +
@@ -48,10 +48,15 @@ export default {
     height: 250px;
     &__link {
       color: inherit;
+      border-radius: 4px;
       display: inline-block;
       height: 100%;
       text-decoration: none;
+      transition: box-shadow 0.3s;
       width: 100%;
+      &:hover {
+        box-shadow: 1px 1px 10px #444444;
+      }
     }
   }
 }

@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="loader" v-if="loading">
+      <bounce-loader :loading="loading" :color="'#ef5350'" :size="100" />
+    </div>
     <Cards :pokemons="pokemons" />
   </div>
 </template>
@@ -15,12 +18,17 @@ export default {
 
   data() {
     return {
-      pokemons: []
+      pokemons: [],
+      loading: false
     };
   },
 
   created() {
-    api.getPokemons().then(pokemons => (this.pokemons = pokemons));
+    this.loading = true;
+    api
+      .getPokemons()
+      .then(pokemons => (this.pokemons = pokemons))
+      .finally(() => (this.loading = false));
   }
 };
 </script>

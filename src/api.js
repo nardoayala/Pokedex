@@ -12,7 +12,14 @@ function getPokemon(id) {
     .then(res => res);
 }
 
+function getEvolutionChain(id) {
+  return fetch(`${URL}/evolution-chain/${id}/`)
+    .then(res => res.json())
+    .then(res => res.chain);
+}
+
 export default {
   getPokemons,
-  getPokemon
+  getPokemon,
+  getEvolutionChain
 };
