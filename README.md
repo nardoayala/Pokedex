@@ -1,6 +1,12 @@
 # Pokédex
 
-This is a small Pokédex buitl with Vue.js that gets all the data from [PokéAPI](https://pokeapi.co/)
+This is a Pokédex I built for fun with Vue.js, it gets data for the first 150 pokémons from [PokéAPI](https://pokeapi.co/).
+
+## Demo
+
+You can have a look on [https://nardoyala-pokedex.netlify.app/](https://nardoyala-pokedex.netlify.app/)
+
+![Screenshot](https://raw.githubusercontent.com/nardoyala/pokedex/master/images/screenshot.png)
 
 ## Project setup
 ```
