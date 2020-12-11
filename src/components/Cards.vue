@@ -1,19 +1,14 @@
 <template>
   <div class="cards">
-    <div class="cards__item" v-for="(pokemon, index) in pokemons" :key="index">
-      <router-link
-        class="cards__item__link"
-        :to="{ name: 'pokemon-details', params: { id: index + 1 } }"
-      >
-        <h5>#{{ (index + 1) | leadingZero }}</h5>
-        <img
-          :src="
-            `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index +
-              1}.png`
-          "
-        />
-        <h3>{{ pokemon.name | capitalize }}</h3>
-      </router-link>
+    <div
+      class="card"
+      v-for="(pokemon, index) in pokemons"
+      :key="index"
+      v-on:click="$emit('clicked-card', `${index}`)"
+    >
+      <h5>#{{ (index + 1) | leadingZero }}</h5>
+      <img :src="`${imageUrl}/${index + 1}.png`" />
+      <h3>{{ pokemon.name | capitalize }}</h3>
     </div>
   </div>
 </template>
@@ -23,15 +18,18 @@ export default {
   name: "Cards",
 
   data() {
-    return {};
+    return {
+      imageUrl:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon",
+    };
   },
 
   props: {
     pokemons: {
       type: Array,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 };
 </script>
 
@@ -42,22 +40,15 @@ export default {
   gap: 20px;
   justify-content: center;
   margin: 3rem;
-  &__item {
-    background-color: #e5e5e5;
-    border-radius: 4px;
-    height: 250px;
-    &__link {
-      color: inherit;
-      border-radius: 4px;
-      display: inline-block;
-      height: 100%;
-      text-decoration: none;
-      transition: box-shadow 0.3s;
-      width: 100%;
-      &:hover {
-        box-shadow: 1px 1px 10px #444444;
-      }
-    }
+}
+.card {
+  background-color: #e5e5e5;
+  border-radius: 4px;
+  height: 250px;
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 1px 1px 10px #444444;
   }
 }
 </style>

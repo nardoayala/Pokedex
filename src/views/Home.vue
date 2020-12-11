@@ -3,23 +3,27 @@
     <div class="loader" v-if="loading">
       <bounce-loader :loading="loading" :color="'#ef5350'" :size="100" />
     </div>
-    <Cards :pokemons="pokemons" />
+    <Cards :pokemons="pokemons" @clicked-card="onClickCard" />
+    <Modal v-if="showModal" :index="index" @close-modal="closeModal" />
   </div>
 </template>
 
 <script>
 import api from "@/api";
 import Cards from "@/components/Cards";
+import Modal from "@/components/Modal";
 
 export default {
   name: "Home",
 
-  components: { Cards },
+  components: { Cards, Modal },
 
   data() {
     return {
       pokemons: [],
-      loading: false
+      index: 0,
+      loading: false,
+      showModal: false,
     };
   },
 
@@ -27,8 +31,28 @@ export default {
     this.loading = true;
     api
       .getPokemons()
-      .then(pokemons => (this.pokemons = pokemons))
+      .then((pokemons) => (this.pokemons = pokemons))
       .finally(() => (this.loading = false));
-  }
+  },
+
+  methods: {
+    onClickCard(index) {
+      this.index = Number(index) + 1;
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
+  },
 };
 </script>
+
+<style lang="scss">
+.loader {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 70px);
+  width: 100%;
+}
+</style>
