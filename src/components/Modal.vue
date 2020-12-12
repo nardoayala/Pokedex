@@ -15,18 +15,28 @@
             <img :src="`${pokemon.sprites.front_default}`" />
 
             <div class="pokemon-property">
-              <span>Base Experience: {{ pokemon.base_experience }}xp</span>
+              <p>
+                Base Experience: <span>{{ pokemon.base_experience }}XP</span>
+              </p>
             </div>
             <div class="pokemon-property">
-              <span>Height: {{ pokemon.height / 10 }}m</span>
+              <p>
+                Height: <span>{{ pokemon.height / 10 }}m</span>
+              </p>
             </div>
             <div class="pokemon-property">
-              <span>Weight: {{ pokemon.weight / 10 }}Kg</span>
+              <p>
+                Weight: <span>{{ pokemon.weight / 10 }}Kg</span>
+              </p>
             </div>
 
             <ul class="pokemon-types-list">
-              <li v-for="item in pokemon.types" :key="item.slot">
-                {{ item.type.name.toUpperCase() }}
+              <li
+                v-for="item in pokemon.types"
+                :key="item.slot"
+                :class="'type-tag ' + item.type.name"
+              >
+                {{ item.type.name | capitalize }}
               </li>
             </ul>
           </div>
@@ -70,8 +80,7 @@ export default {
         .finally(() => (this.loading = false));
     },
   },
-
-}
+};
 </script>
 
 <style lang="scss">
@@ -111,20 +120,81 @@ export default {
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin: 3rem;
+    margin: 1rem;
   }
   &-name {
     margin: 0;
   }
+  &-property {
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    p {
+      margin: 10px auto;
+    }
+    span {
+      float: right;
+    }
+  }
   &-types-list {
     display: flex;
-    gap: 10px;
     list-style: none;
-    margin-top: 10px;
+    margin-top: 30px;
     padding: 0;
-    li {
-      padding: 12px;
-    }
+  }
+}
+.type-tag {
+  margin-right: 20px;
+  &.grass {
+    color: #5cb737;
+  }
+  &.poison {
+    color: #88447a;
+  }
+  &.fire {
+    color: #d52100;
+  }
+  &.flying {
+    color: #556dff;
+  }
+  &.water {
+    color: #0080ff;
+  }
+  &.bug {
+    color: #83901a;
+  }
+  &.normal {
+    color: #797964;
+  }
+  &.electric {
+    color: #c90;
+  }
+  &.ground {
+    color: #bf9926;
+  }
+  &.fairy {
+    color: #e76de7;
+  }
+  &.fighting {
+    color: #a84d3d;
+  }
+  &.psychic {
+    color: #ff227a;
+  }
+  &.rock {
+    color: #a59249;
+  }
+  &.steel {
+    color: #8e8ea4;
+  }
+  &.ice {
+    color: #0af;
+  }
+  &.ghost {
+    color: #5454b3;
+  }
+  &.dragon {
+    color: #4e38e9;
   }
 }
 </style>

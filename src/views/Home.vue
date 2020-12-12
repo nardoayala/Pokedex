@@ -4,7 +4,9 @@
       <bounce-loader :loading="loading" :color="'#ef5350'" :size="100" />
     </div>
     <Cards :pokemons="pokemons" @clicked-card="onClickCard" />
-    <Modal v-if="showModal" :index="index" @close-modal="closeModal" />
+    <transition name="fade">
+      <Modal v-if="showModal" :index="index" @close-modal="closeModal" />
+    </transition>
   </div>
 </template>
 
@@ -54,5 +56,13 @@ export default {
   justify-content: center;
   height: calc(100vh - 70px);
   width: 100%;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
