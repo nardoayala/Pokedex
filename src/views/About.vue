@@ -20,14 +20,24 @@
 
 <style lang="scss" scoped>
 .about {
-  padding: 4rem 0;
-  font-size: 1.25rem;
+  padding: 1rem 0;
+  font-size: 1rem;
+  @media screen and (min-width: 425px) {
+    font-size: 1.25rem;
+  }
+  @media screen and (min-width: 1024px) {
+    padding: 4rem 0;
+  }
   &__container {
+    width: 90%;
     max-width: 800px;
     margin: auto;
   }
   &__title {
-    font-size: 3rem;
+    font-size: 2rem;
+    @media screen and (min-width: 425px) {
+      font-size: 3rem;
+    }
   }
   &__tools {
     ul {
@@ -38,7 +48,7 @@
         margin-bottom: 15px;
       }
       a {
-        color: rgba(0,116,236,.93);
+        color: rgba(0, 116, 236, 0.93);
         text-decoration: none;
         &:hover {
           text-decoration: underline;

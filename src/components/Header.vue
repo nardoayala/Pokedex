@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: "Header"
+  name: "Header",
 };
 </script>
 
@@ -30,21 +30,24 @@ export default {
     display: flex;
     justify-content: space-between;
     margin: auto;
-    max-height: 100%;
+    width: 90%;
     max-width: 850px;
+    max-height: 100%;
   }
   &__brand {
-    width: min-content;
+    width: 60%;
     text-align: left;
     img {
       max-height: 100%;
     }
   }
   &__links {
-    align-content: center;
     display: flex;
-    list-style: none;
+    align-content: center;
+    justify-content: flex-end;
+    width: 40%;
     padding: 0;
+    list-style: none;
     a {
       color: white;
       font-weight: 600;
